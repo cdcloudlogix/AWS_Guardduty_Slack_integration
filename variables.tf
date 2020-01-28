@@ -10,3 +10,11 @@ variable "main_aws_account_id" {
 variable "member_aws_account_id" {
   default = "123456789012"
 }
+
+variable "ssm_slack_channel" {
+  default = "slack-channel"
+}
+
+variable "ssm_slack_incoming_webhook" {
+  default = "slack-incoming-webhook"
+}
