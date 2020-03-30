@@ -2,10 +2,10 @@
 # Enable AWS GuardDuty in Main AWS account
 # -----------------------------------------------------------
 module "aws_guardduty_master" {
-  source = "modules/guardduty-master"
+  source = "./modules/guardduty-master"
 
   providers = {
-    aws = "aws.main"
+    aws = aws.main
   }
 }
 
@@ -14,10 +14,10 @@ module "aws_guardduty_master" {
 # -----------------------------------------------------------
 
 module "aws_guardduty_sns_notifications" {
-  source = "modules/sns-guardduty-slack"
+  source = "./modules/sns-guardduty-slack"
 
   providers = {
-    aws = "aws.main"
+    aws = aws.main
   }
 
   event_rule                 = module.aws_guardduty_master.guardduty_event_rule
@@ -30,14 +30,14 @@ module "aws_guardduty_sns_notifications" {
 # -----------------------------------------------------------
 
 module "aws_guardduty_invite_member" {
-  source = "modules/guardduty-invitation"
+  source = "./modules/guardduty-invitation"
 
   providers = {
-    aws = "aws.main"
+    aws = aws.main
   }
 
   detector_master_id     = module.aws_guardduty_master.guardduty_master_id
-  email_member_parameter = var.email_member_parameter_member
+  email_member_parameter = var.ssm_email_member_parameter
   member_account_id      = var.member_aws_account_id
 }
 
@@ -46,10 +46,10 @@ module "aws_guardduty_invite_member" {
 # -----------------------------------------------------------
 
 module "aws_guardduty_member" {
-  source = "modules/guardduty-member"
+  source = "./modules/guardduty-member"
 
   providers = {
-    aws = "aws.member"
+    aws = aws.member
   }
 
   master_account_id = var.main_aws_account_id

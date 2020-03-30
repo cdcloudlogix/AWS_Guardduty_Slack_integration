@@ -13,22 +13,20 @@ terraform {
 provider "aws" {
   region  = "eu-west-1"
   version = "~> 2.6"
-
-  profile = "default"
 }
 
 provider "aws" {
   region  = "eu-west-1"
   version = "~> 2.6"
-
   alias   = "main"
+
   profile = "default"
 }
 
 provider "aws" {
   region  = "eu-west-1"
   version = "~> 2.6"
-
   alias   = "member"
+
   profile = "member"
 }
