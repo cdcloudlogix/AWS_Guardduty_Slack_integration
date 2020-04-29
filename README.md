@@ -4,6 +4,8 @@ This project is composed of several modules specialised in AWS Security componen
 
 ![Image](Guardduty.png?raw=true)
 
+You can more information in the following [guideline](https://medium.com/@obutterbach/aws-guardduty-to-slack-6419e758aa8f).
+
 ## Description
 
 This Terraform repository would do the following:
